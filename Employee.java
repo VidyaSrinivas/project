@@ -1,5 +1,4 @@
-package employee;
-
+package trem2project;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,8 +31,8 @@ class Emp {
 		date_of_birth=sc.nextInt();
 		System.out.println("enter Email Id:");
 		emailid=sc.next();
-		boolean valid=isValid(emailid);
-	  if(!valid) {
+		boolean valid1=isValidemail(emailid);
+	       if(!valid1) {
 		System.out.println("Email Id is invalid");
 		System.out.println("enter Email Id:");
 		emailid=sc.next();
@@ -41,12 +40,18 @@ class Emp {
 	
 		System.out.println("Enter Phone Number:");
 		Phoneno=sc.next();
+         boolean valid2=isValidphoneno(Phoneno);
+		if(!valid2){
+		System.out.println("Phone number is invalid");
+		System.out.println("Enter again the valid phone number");
+		}
+		Phoneno=sc.next();
 		System.out.println("enter martial status:");
 		martial_status=sc.next();
 		System.out.println("enter date of marriage:");
 		date_of_marriage=sc.nextInt();
 	}
-boolean isValid(String emailid){
+boolean isValidemail(String emailid){
 	Pattern P1 = Pattern.compile("(^[a-z1-9]*)\\ @([a-z]*)\\.([a-zA-Z]*)");
   Matcher m1 =P1.matcher(emailid);
 	if(m1.find()) { 
@@ -55,6 +60,15 @@ boolean isValid(String emailid){
 	else
 		return	false;	
 }
+ boolean isValidphoneno(String Phoneno){
+  Pattern P2 = Pattern.compile("(^[0-9])");
+ Matcher m2 = P2.matcher(Phoneno);
+   if(m2.find()){
+   return true;
+   }
+   else 
+  return false;
+  }
 
 	public void display() {
 		System.out.println("employee id:" + employee_id);
@@ -70,7 +84,7 @@ boolean isValid(String emailid){
 	}
 }
 
-class Employee{
+public class Employee{
 	public static void main(String[] args){
 		Emp[] E=new Emp[3];
 		for(int i=0;i<3;i++){
@@ -80,3 +94,5 @@ class Employee{
 		}
 }
 }
+
+
